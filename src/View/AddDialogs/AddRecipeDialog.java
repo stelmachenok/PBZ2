@@ -1,5 +1,8 @@
+package View.AddDialogs;
+
 import javax.swing.*;
 import java.awt.*;
+import Controller.Controller;
 
 /**
  * Created by y50-70 on 25.10.2017.

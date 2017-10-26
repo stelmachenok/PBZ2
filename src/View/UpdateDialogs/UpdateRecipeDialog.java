@@ -1,3 +1,7 @@
+package View.UpdateDialogs;
+
+import Controller.Controller;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -11,35 +15,41 @@ public class UpdateRecipeDialog {
         this.controller = controller;
         JDialog dialog = new JDialog();
         dialog.setVisible(true);
-        dialog.setSize(300, 300);
+        dialog.setSize(300, 350);
         JPanel panel = new JPanel(new FlowLayout());
         dialog.add(panel);
 
-        JLabel labelName = new JLabel("Код рецепта");
+
+        JLabel labelSearchCode = new JLabel("Поиск: Код рецепта");
+        JTextField searchCode = new JTextField(20);
+        JLabel labelCode = new JLabel("Код рецепта");
         JTextField code = new JTextField(20);
-        JLabel labelIngredients = new JLabel("Название");
+        JLabel labelName= new JLabel("Название");
         JTextField name = new JTextField(20);
-        JLabel labelRecipe = new JLabel("Описание рецепта:код");
+        JLabel labelRecipeDescr = new JLabel("Описание рецепта:код");
         JTextField recipeDescr = new JTextField(20);
-        JLabel labelGroup = new JLabel("Автор:код");
+        JLabel labelAuthor = new JLabel("Автор:код");
         JTextField author = new JTextField(20);
 
-        JButton button = new JButton("Добавить");
+        JButton button = new JButton("Обновить");
         button.addActionListener(e -> {
+            String searchCodeString = searchCode.getText();
             String codeString = code.getText();
             String nameString = name.getText();
             String recipeString = recipeDescr.getText();
             String authorString = author.getText();
-
-            controller.addRecipe(codeString, nameString, recipeString, authorString);
+            controller.updateRecipe(searchCodeString, codeString, nameString, recipeString, authorString);
         });
-        panel.add(labelName);
+
+        panel.add(labelSearchCode);
+        panel.add(searchCode);
+        panel.add(labelCode);
         panel.add(code);
-        panel.add(labelIngredients);
+        panel.add(labelName);
         panel.add(name);
-        panel.add(labelRecipe);
+        panel.add(labelRecipeDescr);
         panel.add(recipeDescr);
-        panel.add(labelGroup);
+        panel.add(labelAuthor);
         panel.add(author);
         panel.add(button);
     }

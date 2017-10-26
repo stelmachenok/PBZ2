@@ -1,6 +1,17 @@
+package View;
+
+import View.AddDialogs.AddProductDialog;
+import View.AddDialogs.AddProviderDialog;
+import View.AddDialogs.AddRecipeDialog;
+import Controller.Controller;
+import View.DeleteDialogs.DeleteProductDialog;
+import View.DeleteDialogs.DeleteProviderDialog;
+import View.DeleteDialogs.DeleteRecipeDialog;
+import View.UpdateDialogs.UpdateProductDialog;
+import View.UpdateDialogs.UpdateProviderDialog;
+import View.UpdateDialogs.UpdateRecipeDialog;
+
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,7 +24,16 @@ public class MainFrame {
     private JPanel panel;
     private JTabbedPane tabbedPane;
     private Controller controller;
+    private JTextField date = new JTextField(20);
+    private JTextField provider = new JTextField(20);
 
+    public JTextField getDate() {
+        return date;
+    }
+
+    public JTextField getProvider() {
+        return provider;
+    }
 
     private MainFrame() {
         createFrame();
@@ -50,11 +70,9 @@ public class MainFrame {
         columnNames = new String[]{"Название", "Список ингридиентов", "Рецепт:код", "Группа:код"};
         columnData = new String[][]{{"a", "a", "a", "a"}};
         table = new JTable(columnData, columnNames);
-//        table.setTableHeader(new JTableHeader());
         scrollPane = new JScrollPane(table);
         tabPanel = new JPanel(new BorderLayout());
         tabPanel.add(scrollPane, BorderLayout.CENTER);
-
         buttonAdd = new JButton("Добавить");
         buttonAdd.addActionListener(e -> {
             new AddProductDialog(controller);
@@ -65,134 +83,121 @@ public class MainFrame {
         });
         buttonUpdate = new JButton("Обновить");
         buttonUpdate.addActionListener(e -> {
-           new UpdateProductDialog(controller);
+            new UpdateProductDialog(controller);
         });
         buttonPanel = new JPanel(new FlowLayout());
         buttonPanel.add(buttonAdd);
         buttonPanel.add(buttonUpdate);
         buttonPanel.add(buttonDelete);
-        tabPanel.add(buttonPanel,BorderLayout.SOUTH);
+        tabPanel.add(buttonPanel, BorderLayout.SOUTH);
         tabbedPane.addTab("Продукты", tabPanel);
+
+
 
 
 
         columnNames = new String[]{"Код", "Название", "Описание рецепта:код", "Автор:код"};
         columnData = new String[][]{{"a", "a", "a", "a"}};
         table = new JTable(columnData, columnNames);
-//        table.setTableHeader(new JTableHeader());
         scrollPane = new JScrollPane(table);
         tabPanel = new JPanel(new BorderLayout());
         tabPanel.add(scrollPane, BorderLayout.CENTER);
-
-
         buttonAdd = new JButton("Добавить");
         buttonAdd.addActionListener(e -> {
             new AddRecipeDialog(controller);
         });
         buttonDelete = new JButton("Удалить");
         buttonDelete.addActionListener(e -> {
-//            new DeleteRecipeDialog(controller);
+            new DeleteRecipeDialog(controller);
         });
         buttonUpdate = new JButton("Обновить");
         buttonUpdate.addActionListener(e -> {
-//            new UpdateRecipeDialog(controller);
+            new UpdateRecipeDialog(controller);
         });
         buttonPanel = new JPanel(new FlowLayout());
         buttonPanel.add(buttonAdd);
         buttonPanel.add(buttonUpdate);
         buttonPanel.add(buttonDelete);
-        tabPanel.add(buttonPanel,BorderLayout.SOUTH);
-
-
+        tabPanel.add(buttonPanel, BorderLayout.SOUTH);
         tabbedPane.addTab("Рецепт", tabPanel);
+
+
+
+
 
         columnNames = new String[]{"Код", "Название", "Адрес", "Телефон"};
         columnData = new String[][]{{"a", "a", "a", "a"}};
         table = new JTable(columnData, columnNames);
-//        table.setTableHeader(new JTableHeader());
         scrollPane = new JScrollPane(table);
         tabPanel = new JPanel(new BorderLayout());
         tabPanel.add(scrollPane, BorderLayout.CENTER);
+        buttonAdd = new JButton("Добавить");
+        buttonAdd.addActionListener(e -> {
+            new AddProviderDialog(controller);
+        });
+        buttonDelete = new JButton("Удалить");
+        buttonDelete.addActionListener(e -> {
+            new DeleteProviderDialog(controller);
+        });
+        buttonUpdate = new JButton("Обновить");
+        buttonUpdate.addActionListener(e -> {
+            new UpdateProviderDialog(controller);
+        });
+        buttonPanel = new JPanel(new FlowLayout());
+        buttonPanel.add(buttonAdd);
+        buttonPanel.add(buttonUpdate);
+        buttonPanel.add(buttonDelete);
+        tabPanel.add(buttonPanel, BorderLayout.SOUTH);
         tabbedPane.addTab("Поставщик", tabPanel);
+
+
+
 
         columnNames = new String[]{"Название", "Список ингридиентов", "Рецепт:код", "Группа:код"};
         columnData = new String[][]{{"a", "a", "a", "a"}};
         table = new JTable(columnData, columnNames);
-//        table.setTableHeader(new JTableHeader());
         scrollPane = new JScrollPane(table);
         tabPanel = new JPanel(new BorderLayout());
         tabPanel.add(scrollPane, BorderLayout.CENTER);
         tabbedPane.addTab("Малокалорийные блюда", tabPanel);
 
-//        columnNames = new String[]{"Код", "Название"};
-//        columnData = new String[][]{{"a", "a"}};
-//        table = new JTable(columnData, columnNames);
-////        table.setTableHeader(new JTableHeader());
-//        scrollPane = new JScrollPane(table);
-//        tabPanel = new JPanel(new BorderLayout());
-//        tabPanel.add(scrollPane, BorderLayout.CENTER);
-//        tabbedPane.addTab("Группа", tabPanel);
-
-//        columnNames = new String[]{"Код", "Фамилия", "Имя", "Страна", "Год"};
-//        columnData = new String[][]{{"a", "a", "a", "a", "a"}};
-//        table = new JTable(columnData, columnNames);
-////        table.setTableHeader(new JTableHeader());
-//        scrollPane = new JScrollPane(table);
-//        tabPanel = new JPanel(new BorderLayout());
-//        tabPanel.add(scrollPane, BorderLayout.CENTER);
-//        tabbedPane.addTab("Автор", tabPanel);
-
-
-//        columnNames = new String[]{"Код", "Ингридиент:код", "Грамм на кг", "Способ приготовления:код"};
-//        columnData = new String[][]{{"a", "a", "a", "a"}};
-//        table = new JTable(columnData, columnNames);
-////        table.setTableHeader(new JTableHeader());
-//        scrollPane = new JScrollPane(table);
-//        tabPanel = new JPanel(new BorderLayout());
-//        tabPanel.add(scrollPane, BorderLayout.CENTER);
-//        tabbedPane.addTab("Описание рецепта", tabPanel);
-
-
-//        columnNames = new String[]{"Код", "Название"};
-//        columnData = new String[][]{{"a", "a"}};
-//        table = new JTable(columnData, columnNames);
-////        table.setTableHeader(new JTableHeader());
-//        scrollPane = new JScrollPane(table);
-//        tabPanel = new JPanel(new BorderLayout());
-//        tabPanel.add(scrollPane, BorderLayout.CENTER);
-//        tabbedPane.addTab("Способ приготовления", tabPanel);
-
-
-//        columnNames = new String[]{"Код", "Название", "Ккал/грамм", "Поставщик:код", "Накладная:Дата"};
-//        columnData = new String[][]{{"a", "a", "a", "a", "a"}};
-//        table = new JTable(columnData, columnNames);
-////        table.setTableHeader(new JTableHeader());
-//        scrollPane = new JScrollPane(table);
-//        tabPanel = new JPanel(new BorderLayout());
-//        tabPanel.add(scrollPane, BorderLayout.CENTER);
-//        tabbedPane.addTab("Ингридиент", tabPanel);
-
-
-//        columnNames = new String[]{"Дата", "Игридиент:код", "Сумма", "Грамм"};
-//        columnData = new String[][]{{"a", "a", "a", "a"}};
-//        table = new JTable(columnData, columnNames);
-////        table.setTableHeader(new JTableHeader());
-//        scrollPane = new JScrollPane(table);
-//        tabPanel = new JPanel(new BorderLayout());
-//        tabPanel.add(scrollPane, BorderLayout.CENTER);
-//        tabbedPane.addTab("Накладная (на дату получения)", tabPanel);
 
 
 
+        columnNames = new String[]{"Дата","Код поставщика","Название поставщика","Адрес поставщика","Телефон","Цена"};
+        columnData = new String[][]{{"a", "a", "a", "a", "a", "a"}};
+        table = new JTable(columnData, columnNames);
+        scrollPane = new JScrollPane(table);
+        tabPanel = new JPanel(new BorderLayout());
+        tabPanel.add(scrollPane, BorderLayout.CENTER);
+        buttonPanel = new JPanel(new FlowLayout());
+        buttonUpdate = new JButton("Обновить");
+        buttonUpdate.addActionListener(e -> {
+            controller.updatePriceList();
+        });
+        buttonPanel.add(date);
+        buttonPanel.add(provider);
+        buttonPanel.add(buttonUpdate);
+        tabPanel.add(buttonPanel, BorderLayout.SOUTH);
+        tabbedPane.addTab("Прайс-лист", tabPanel);
+
+
+        columnNames = new String[]{"Название блюда", "Название рецепта"};
+        columnData = new String[][]{{"a", "a"}};
+        table = new JTable(columnData, columnNames);
+        scrollPane = new JScrollPane(table);
+        tabPanel = new JPanel(new BorderLayout());
+        tabPanel.add(scrollPane, BorderLayout.CENTER);
+        tabbedPane.addTab("Блюдо-рецепт", tabPanel);
 
         tabbedPane.addChangeListener(e -> {
             String tabName = tabbedPane.getTitleAt(tabbedPane.getSelectedIndex());
-            switch (tabName){
-                case "Продукты":{
+            switch (tabName) {
+                case "Продукты": {
                     controller.showAllProducts();
                     break;
                 }
-                case "Поставщик":{
+                case "Поставщик": {
                     controller.showAllProviders();
                     break;
                 }
@@ -204,9 +209,16 @@ public class MainFrame {
                     controller.showAllMinimalcalories();
                     break;
                 }
+                case "Блюдо-рецепт": {
+                    controller.showAllProductsWithRecipe();
+                    break;
+                }
+//                case "Прайс-лист": {
+//                    controller.showPriceList();
+//                    break;
+//                }
             }
         });
-
         panel.add(tabbedPane, BorderLayout.CENTER);
         controller.showAllProducts();
         panel.updateUI();
@@ -224,7 +236,7 @@ public class MainFrame {
                         Component viewPortComponents[] = ((JViewport) scrollPaneComponents[i]).getComponents();
                         for (int k = 0; k < viewPortComponents.length; k++) {
                             if (viewPortComponents[i] instanceof JTable)
-                            return (JTable) viewPortComponents[0];
+                                return (JTable) viewPortComponents[0];
                         }
                     }
                 }

@@ -1,10 +1,10 @@
-/**
+package View.UpdateDialogs; /**
  * Created by y50-70 on 25.10.2017.
  */
+import Controller.Controller;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class UpdateProductDialog {
     Controller controller;

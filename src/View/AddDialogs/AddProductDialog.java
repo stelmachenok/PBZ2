@@ -1,13 +1,14 @@
+package View.AddDialogs;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import Controller.Controller;
 
 /**
  * Created by y50-70 on 24.10.2017.
  */
 public class AddProductDialog {
-    Controller controller;
+    private Controller controller;
 
     public AddProductDialog(Controller controller) {
         this.controller = controller;
